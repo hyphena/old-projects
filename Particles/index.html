@@ -1,0 +1,66 @@
+<!doctype HTML>
+<html>
+  <head>
+    <title>Particles</title>
+    <script src="jQuery.js"></script>
+  </head>
+  <body>
+    <canvas id="mainCanvas"></canvas>
+    
+    <script>
+      //Canvas Setup
+      var canvas = document.getElementById("mainCanvas");
+      var ctx = canvas.getContext("2d");
+      var lastRender = 0;
+      
+      //Mouse Variables
+      var cursorX = 0;
+      var cursorY = 0;
+      var mouseDown = false;
+      
+      //Particle Variables
+      var amount = 10;
+      var tracker = {};
+      
+      function updateParticles()
+      {
+        
+      }
+      
+      
+      
+      /* CORE LOOP */
+      function update(progress)
+      {
+        
+      }
+      
+      function draw()
+      {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+      }
+      
+      function loop(timestamp)
+      {
+        var lastRender = timestamp;
+        var progress = timestamp - lastRender;
+        
+        update(progress);
+        draw();
+        
+        window.requestAnimationFrame(loop);
+      }
+      /* END CORE LOOP */
+      
+      
+      
+      //Mouse Movement
+      canvas.addEventListener("mousemove", function(evt)
+      {
+        cursorX = evt.clientX;
+        cursorY = evt.clientY;
+        console.log(cursorX + " " + cursorY);
+      });
+    </script>
+  </body>
+</html>

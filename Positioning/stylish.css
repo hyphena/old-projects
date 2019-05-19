@@ -1,0 +1,24 @@
+#canvas {
+	display: block;
+	margin: auto;
+	border: 2px dotted white;
+}
+
+#score {
+	display: block;
+	margin: 0;
+	margin-left: auto;
+	margin-right: auto;
+	border: 0px dotted white;
+	border-top: 0px;
+}
+
+body {
+	background-color: black;
+}
+
+p {
+	color: white;
+	float: left;
+	margin: auto;
+}

@@ -1,0 +1,42 @@
+<!-- April 25th, 2018 -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Exercise 3</title>
+    <link rel="stylesheet" type="text/css" href="stylish.css" />
+  </head>
+  <body>
+    <div id="mainContainer">
+      <h1 id="header">Bean Counting</h1>
+      <hr>
+      <p id="content">Input:<br>BBC<br>kakkerlak<br><br>Output:<br></p>
+      
+      <script>
+        function countBs(string)
+        {
+          var hits = 0;
+          
+          for (var i = 0; i < string.length; i++)
+            if (string[i] == "B")
+              hits++;
+              
+          document.getElementById("content").innerHTML += hits + " Bs were found in " + string + "<br>";
+        }
+        
+        function countChar(string, char)
+        {
+          var hits = 0;
+          
+          for (var i = 0; i < string.length; i++)
+            if (string[i] == char)
+              hits++;
+              
+          document.getElementById("content").innerHTML += hits + " " + char + "s were found in " + string + "<br>";
+        }
+        
+        countBs("BBC");
+        countChar("kakkerlak", 'k');
+      </script>
+    </div>
+  </body>
+</html>

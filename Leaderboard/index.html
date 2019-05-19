@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Leaderboard</title>
+    <link rel="stylesheet" type="text/css" href="stylish.css">
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans" rel="stylesheet">
+    <script type="text/javascript" src="jQuery.js"></script>
+    <script type="text/javascript" src="java.js"></script>
+  </head>
+  <body>
+    <div id="navbar">
+      
+    </div>
+    
+    <div id="content" style="display: flex">
+      <div id="leaderboard">
+        <div id="header">
+          <table id="hTable" style="border-collapse: collapse;">
+            <tr>
+              <th id="hRank">Rank</th>
+              <th id="hName">Name</th>
+              <th id="hTime">Time</th>
+            </tr>
+          </table>
+        </div>
+        
+        <div id="tableHolder">
+          <table id="table" style="border-collapse: collapse;">
+            <tr></tr>
+          </table>
+        </div>
+      </div>
+      
+      <div id="input">
+        <input id="iName" type="text" placeholder="Name">
+        <br>
+        <input id="iTime" type="text" placeholder="Time">
+        <br>
+        <button id="submit">Submit</button>
+        <button id="reset">Reset Table</button>
+        <a href="#" id="save">Save</a>
+      </div>
+    </div>
+  </body>
+</html>

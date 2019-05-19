@@ -1,0 +1,57 @@
+<!-- April 24th, 2017 -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Exercise 1</title>
+    <link rel="stylesheet" type="text/css" href="stylish.css" />
+  </head>
+  <body>
+    <div id="mainContainer">
+      <h1 id="header">The Sum of a Range</h1>
+      <hr>
+      <p id="content"></p>
+      
+      <script>
+        function range(start, end, step)
+        {
+          var output = [];
+          
+          if (step == null)
+            step = 1;
+          
+          if (step > 0)
+          {
+            for (i = start; i <= end; i++)
+              if ((i % step) == 0)
+                output.push(i);
+          }
+          else
+          {
+            for (i = start; i >= end; i--)
+              if ((i % step) == 0)
+                output.push(i);
+          }
+            
+          return output;
+        }
+        
+        function sum(range)
+        {
+          var output = 0;
+          
+          for (i = 0; i < range.length; i++)
+            output += range[i];
+            
+          return output;
+        }
+        
+        document.getElementById("content").innerHTML += "Input:<br>" + range(1, 10) + "<br>";
+        document.getElementById("content").innerHTML += range(1, 10, 2) + "<br>";
+        document.getElementById("content").innerHTML += range(5, 2, -1) + "<br>";
+        document.getElementById("content").innerHTML += "<br>Output:<br>" + sum(range(1, 10)) + "<br>";
+        document.getElementById("content").innerHTML += sum(range(1, 10, 2)) + "<br>";
+        document.getElementById("content").innerHTML += sum(range(5, 2, -1)) + "<br>";
+      </script>
+    </div>
+  </body>
+</html>

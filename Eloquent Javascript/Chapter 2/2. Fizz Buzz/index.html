@@ -1,0 +1,27 @@
+<!-- January 24th, 2018 -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Exercise 2</title>
+    <link rel="stylesheet" type="text/css" href="stylish.css" />
+  </head>
+  <body>
+    <div id="mainContainer">
+      <h1 id="header">Fizz Buzz</h1>
+      <hr>
+      <p id="content"></p>
+      
+      <script>
+        for (var i = 1; i < 101; i++)
+        {
+          if (i % 5 == 0)
+            document.getElementById("content").innerHTML += "Buzz<br>";
+          else if (i % 3 == 0)
+            document.getElementById("content").innerHTML += "Fizz<br>";
+          else
+            document.getElementById("content").innerHTML += i + "<br>";
+        }
+      </script>
+    </div>
+  </body>
+</html>

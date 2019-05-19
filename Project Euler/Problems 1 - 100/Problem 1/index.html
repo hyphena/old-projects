@@ -1,0 +1,41 @@
+<!-- October 17th, 2018 -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Problem 1</title>
+    <link rel="stylesheet" type="text/css" href="stylish.css" />
+  </head>
+  <body>
+    <div class="outer">
+      <div class="middle">
+        <div class="inner">
+          <div class="number">001</div>
+          <h1 id="header">Multiples of 3 and 5</h1>
+          <h2>October 17th, 2018</h2>
+          <hr>
+          <p>If we list all the natural numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6 and 9. The sum of these multiples is 23.</p>
+          <p>Find the sum of all the multiples of 3 or 5 below 1000.</p>
+          <p id="code">Code</p>
+          <p id="output"></p>
+            
+          <script>
+            let multiples = [];
+            let sum = 0;
+            
+            for (let i = 0; i < 1000; i++)
+            {
+              if (i % 3 == 0 || i % 5 == 0)
+              {
+                multiples.push(' ' + i);
+                sum += i;
+              }
+            }
+            
+            document.getElementById('code').innerHTML = multiples;
+            document.getElementById('output').innerHTML = 'The sum of all the multiples is <b>' + sum + '</b>.';
+          </script>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

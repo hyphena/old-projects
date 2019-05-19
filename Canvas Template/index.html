@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Canvas Template</title>
+    <link rel="stylesheet" type="text/css" href="stylish.css">
+  </head>
+  <body>
+    <div id="main">
+      <canvas id="canvas"></canvas>
+    </div>
+    
+    <script>
+      var canvas = document.getElementById("canvas");
+      var div = document.getElementById("main");
+      var ctx = canvas.getContext("2d");
+      canvas.width = 678;
+      canvas.height = 678;
+      div.style.margin = (canvas.height / 2 * -1) + "px 0 0" + (canvas.width / 2 * -1) + "px";
+      
+      ctx.fillStyle = "black";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+    </script>
+  </body>
+</html>

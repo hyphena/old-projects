@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Blank</title>
+  </head>
+  <body>
+    <div>
+      <canvas id="mainCanvas" style="border: 1px solid black;">
+      </canvas>
+    </div>
+    
+    
+    <script>
+      var canvas = document.getElementById('mainCanvas');
+      var ctx = canvas.getContext('2d');
+      var currentTime = 0;
+      var lastTime = (new Date()).getTime();
+      var delta = 0;
+      
+      if (ctx != null)
+      {
+        var player = {
+          x: 130,
+          y: 10,
+          w: 20,
+          h: 20,
+          velX: 0,
+          velY: 0,
+          speed: 0,
+          airborne: false
+        };
+        var gravity = 0.2;
+        var acc = 0.046875;
+        var dec = 0.5;
+        var friction = 0.046875;
+        var top = 6;
+        var keys = [];
+        
+        
+        function input()
+        {
+          if (keys[37]) //left
+          {
+            player.velX -= acc;
+            console.log("left");
+            
+            if (player.velX > 0)
+              player.velX -= dec;
+            else if (player.velX > -top)
+              player.velX -= acc;
+          }
+          else if (keys[39]) //right
+          {
+            player.velX += acc;
+            
+            if (player.velX < 0)
+              player.velX += dec;
+            else if (player.velX < top)
+              player.velX += acc;
+          }
+          else
+            player.velX -= Math.min(Math.abs(player.velX), friction) * Math.sign(player.velX);
+            
+            
+          if (keys[38]) //up
+            if (!player.airborne)
+            {
+              player.airborne = true;
+              player.velY = -player.speed * 2;
+            }
+        }
+        
+        function applyPhysics()
+        {
+          player.x += player.velX;
+          
+          if (player.y < 110)
+          {
+            player.velY += gravity;
+            player.y += player.velY;
+          }
+        }
+        
+        function update()
+        {
+          input();
+          applyPhysics();
+        }
+        
+        function draw()
+        {
+          ctx.fillStyle = "black";
+          ctx.beginPath();
+          ctx.moveTo(0, 135,5);
+          ctx.lineTo(300, 135.5);
+          ctx.strokeText(player.velX, 10, 20);
+          ctx.stroke();
+          ctx.fillRect(player.x, player.y, player.w, player.h);
+        }
+        
+        function gameLoop()
+        {
+          currentTime = (new Date()).getTime();
+          delta = (currentTime - lastTime) / 1000;
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          
+          update();
+          draw();
+          
+          lastTime = currentTime;
+          window.requestAnimationFrame(gameLoop);
+        }
+        
+        window.addEventListener("keydown", function(e)
+        {
+          keys[e.keyCode] = true;
+        });
+        
+        window.addEventListener("keyup", function(e)
+        {
+          keys[e.keyCode] = false;
+        })
+        
+        gameLoop();
+      }
+    </script>
+  </body>
+</html>

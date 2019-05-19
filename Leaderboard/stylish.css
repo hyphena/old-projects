@@ -1,0 +1,158 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  overflow-y: hidden;
+}
+
+button {
+  margin-top: .3em;
+}
+
+td {
+  font-size: 14pt;
+  text-align: right;
+}
+
+th, td {
+  font-family: arial;
+  font-weight: normal;
+  
+  padding: .3em;
+  width: 8em;
+}
+
+input {
+  border: 1px solid #AAA;
+  margin-bottom: .3em;
+  margin-top: .3em;
+  margin-right: 0;
+  padding: .2em;
+  width: 100%;
+  
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+textarea:focus, input:focus {
+  outline: none;
+}
+
+#content {
+  margin-top: 2em;
+}
+
+#input {
+  background: #222;
+  /*background-color: #222;*/
+  padding: 1em;
+  
+  min-height: 100%;
+  width: 25%;
+}
+
+#navbar {
+  background: linear-gradient(to bottom, #8A2815 20%, #54180B 90%, #A83017 100%);
+  
+  height: 2em;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+
+
+
+
+/*Table Stylings*/
+th {
+  background-color: #111;
+  color: #FFF;
+  font-family: "Work Sans", sans-serif;
+  font-size: 20pt;
+  
+  height: 10%;
+}
+
+#header
+{
+  height: 8%;
+  padding: 0;
+}
+
+#tableHolder
+{
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, .6), rgba(0, 0, 0, .6)), url("nature.jpg");
+  background-size: cover;
+  overflow-y: auto;
+  
+  height: 92%;
+  width: 100%;
+}
+
+#table
+{
+  font-size: 24pt;
+  
+  margin: 0 auto;
+  width: 95%;
+}
+
+#hTable
+{
+  background-color: #222;
+  
+  height: 102%;
+  margin: 0 auto;
+  width: 95%;
+}
+
+#hRank
+{
+  width: 20%;
+}
+
+#hTime
+{
+  width: 20%;
+}
+
+#tRank
+{
+  -webkit-border-top-left-radius: 10px;
+  -webkit-border-bottom-left-radius: 10px;
+  text-align: center;
+  
+  width: 20%;
+}
+
+#tName
+{
+  text-align: left;
+}
+
+#tTime
+{
+  -webkit-border-top-right-radius: 10px;
+  -webkit-border-bottom-right-radius: 10px;
+  text-align: center;
+  width: 20%;
+}
+
+#leaderboard
+{
+  background-color: #111;
+  overflow-y: hidden;
+  position: relative;
+  
+  min-height: 100%;
+  margin: 0;
+  width: 75%;
+}
+/*End of Table Stylings*/
+
+
+
+
+#content {
+  height: -webkit-calc(100% - 2em);
+}

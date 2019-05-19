@@ -1,0 +1,44 @@
+<!-- January 24th, 2017 -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Exercise 3</title>
+    <link rel="stylesheet" type="text/css" href="stylish.css" />
+  </head>
+  <body>
+    <div id="mainContainer">
+      <h1 id="header">Chessboard</h1>
+      <hr>
+      <p id="content"></p>
+      
+      <script>
+        var height = 8;
+        var width = 8;
+        
+        for (var i = 0; i < height; i++)
+        {
+          for (var j = 0; j < width; j++)
+          {
+            if (i % 2 == 0)
+            {
+              if (j % 2 == 0)
+                document.getElementById("content").innerHTML += "&#9632";
+              else
+                document.getElementById("content").innerHTML += "&#9633";
+            }
+            
+            if (i % 2 == 1)
+            {
+              if (j % 2 == 0)
+                document.getElementById("content").innerHTML += "&#9633";
+              else
+                document.getElementById("content").innerHTML += "&#9632";
+            }
+          }
+          
+          document.getElementById("content").innerHTML += "<br>";
+        }
+      </script>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,86 @@
+<html>
+	<head>
+		<title>This is a page</title>
+		<link rel = "stylesheet" type = "text/css" href = "style.css">
+		<script src = "jquery.js"></script>
+	</head>
+	<body>
+		<span id = "textbox"></span>
+		<span id = "cursor"></span>
+		<script>
+			(function($) {
+				function typeString($textbox, str, cursor, delay, cb) { //start off them functions
+					$textbox.html(function (_, html) { //look through the site for textbox?
+						return html + str[cursor]; //add the cursor...?
+				});
+		
+				if (cursor < str.length - 1) {
+					setTimeout(function() {
+						typeString($textbox, str, cursor + 1, delay, cb);
+					}, delay);
+				} else {
+					cb();
+				}
+			}
+	
+			function deleteString($textbox, delay, cb) {
+				var length;
+
+				$textbox.html(function (_, html) {
+					length = html.length;
+					return html.substr(0, length -1);
+				});
+
+				if (length > 1) {
+					setTimeout(function() {
+						deleteString($textbox, delay, cb);
+					}, delay);
+				} else {
+					cb();
+				}
+			}
+	
+			$.fn.extend({
+				teletype: function (opts) {
+					var settings = $.extend({}, $.teletype.defaults, opts);
+					return $(this).each(function() {
+						(function loop($tex, idx) {
+							typeString($tex, settings.text[idx], 0, settings.delay, function () {
+								setTimeout(function() {
+									deleteString($tex, settings.delay, function() {
+										loop($tex, (idx + 1) % settings.text.length);
+									});
+								}, settings.pause);
+							});
+						}($(this), 0));
+					});
+				}
+			});
+	
+			$.extend ({
+				teletype: {
+					defaults: {
+						delay: 100,
+						pause: 5000,
+						text: []
+					}
+				}
+			});
+		}(jQuery));
+
+		$('#textbox').teletype({
+		  text: [
+			'This is an example sentence!',
+			'This is also another one!',
+			'This will be the final one...'
+		  ]
+		});
+
+		$('#cursor').teletype({
+		  text: ['_', ' '],
+		  delay: 0,
+		  pause: 500
+		});
+			</script>
+	</body>
+</html>

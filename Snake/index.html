@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+  <head><title>Snake</title></head>
+  <body>
+    <div id="center">
+      <canvas id="canvas"></canvas>
+    </div>
+    
+    <script>
+      //Set up the canvas
+      canvas = document.getElementById("canvas");
+      container = document.getElementById("center");
+      ctx = canvas.getContext("2d");
+      canvas.width = 600;
+      canvas.height = 600;
+      container.style.width = canvas.width + "px";
+      
+      //Game variables
+      score = 0;
+      gameState = 0;
+      gridSize = 40;
+      
+      snake = new Array();
+      snakeX = canvas.width / 2 - gridSize / 2;
+      snakeY = canvas.height / 2 - gridSize / 2;
+      snakeDir = 0;
+      snakeHue = 0;
+      snakeSpeed = 4;
+      snake.push({x: snakeX, y: snakeY});
+      
+      fruitX = Math.random() * canvas.width - gridSize / 2;
+      fruitY = Math.random() * canvas.height - gridSize / 2;
+      
+      
+      window.addEventListener("keydown", doKeyDown, true);
+      function doKeyDown(e)
+      {
+        if(gameState == 0)
+        {
+          if (e.keyCode == 32)
+          {
+            gameState = 2;
+          }
+        }
+        if(gameState == 2)
+        {
+          switch (e.keyCode)
+          {
+            case 37:
+              snakeDir = 4;
+              break;
+            case 38:
+              snakeDir = 1;
+              break;
+            case 39:
+              snakeDir = 2;
+              break;
+            case 40:
+              snakeDir = 3;
+              break;
+          }
+        }
+      }
+      
+      function update()
+      {
+        if (gameState == 2)
+        {
+          switch(snakeDir)
+          {
+            case 1:
+              snakeY -= snakeSpeed;
+              break;
+            case 2:
+              snakeX += snakeSpeed;
+              break;
+            case 3:
+              snakeY += snakeSpeed;
+              break;
+            case 4:
+              snakeX -= snakeSpeed;
+              break;
+          }
+          
+          if (snakeX < 0 - gridSize)
+            snakeX = canvas.width;
+          if (snakeX > canvas.width)
+            snakeX = 0 - gridSize;
+          if (snakeY < 0 - gridSize)
+            snakeY = canvas.height;
+          if (snakeY > canvas.height)
+            snakeY = 0 - gridSize;
+          
+          if (snakeX >= fruitX - gridSize && snakeX <= fruitX + gridSize && snakeY >= fruitY - gridSize && snakeY <= fruitY + gridSize)
+          {
+            score += 10;
+            snakeSpeed *= 1.01;
+            fruitX = Math.random() * canvas.width - gridSize / 2;
+            fruitY = Math.random() * canvas.height - gridSize / 2;
+          }
+          
+          if (snakeDir != 0)
+          {
+            snake.unshift({x: snakeX, y: snakeY});
+            if (snake.length > score + 2)
+              snake.splice(snake.indexOf(snake.length - 1), 1);
+          }
+        }
+      }
+      
+      function draw()
+      {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = "black";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        
+        if (gameState == 0)
+        {
+          ctx.font = "30px Calibri";
+          ctx.fillStyle = "white";
+          ctx.textAlign = "center";
+          ctx.fillText("Snake", canvas.width / 2, 160);
+          ctx.font = "14px Calibri";
+          ctx.fillText("Push SPACE to begin", canvas.width / 2, 180);
+        }
+        
+        if (gameState == 2)
+        {
+          ctx.fillStyle = "red";
+          ctx.fillRect(fruitX, fruitY, gridSize, gridSize);
+          ctx.textAlign = "left";
+          snakeHue += .5;
+          ctx.fillStyle = "hsl(" + snakeHue + ", 75%, 50%)";
+          
+          for (i = 0; i < snake.length; i++)
+          {
+            ctx.fillRect(snake[i].x, snake[i].y, gridSize, gridSize);
+          }
+          
+          
+          ctx.fillStyle = "white";
+          ctx.fillText("Score: " + score, 10, 20);
+          ctx.fillText("(" + Math.round(snakeX) + "," + Math.round(snakeY) + ")", 10, 32);
+        }
+      }
+      
+      function main()
+      {
+        update();
+        draw();
+        requestAnimationFrame(main);
+      }
+      
+      requestAnimationFrame(main);
+    </script>
+    
+    <style>
+      body {
+        background-color: #444;
+        background-image: url("black-linen.png");
+        margin: 0;
+      }
+      
+      #center {
+        color: white;
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin: -22% 0 0 -21%;
+        padding: 0;
+      }
+      
+      #canvas {
+        border: 1px solid #444;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </body>
+</html>

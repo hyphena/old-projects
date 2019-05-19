@@ -1,0 +1,29 @@
+<!-- January 25th, 2017 -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Exercise 2</title>
+    <link rel="stylesheet" type="text/css" href="stylish.css" />
+  </head>
+  <body>
+    <div id="mainContainer">
+      <h1 id="header">Recursion</h1>
+      <hr>
+      <p id="content"></p>
+      
+      <script>
+        function isEven(num)
+        {
+          if (num % 2 == 0)
+            document.getElementById("content").innerHTML += num + ": " + true + "<br>";
+          else
+            document.getElementById("content").innerHTML += num + ": " + false + "<br>";
+        }
+        
+        isEven(50);
+        isEven(75);
+        isEven(-1);
+      </script>
+    </div>
+  </body>
+</html>

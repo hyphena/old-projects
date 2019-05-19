@@ -1,0 +1,43 @@
+<!-- April 24th, 2017 -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Exercise 2</title>
+    <link rel="stylesheet" type="text/css" href="stylish.css" />
+  </head>
+  <body>
+    <div id="mainContainer">
+      <h1 id="header">Reversing an Array</h1>
+      <hr>
+      <p id="content">Input:<br>A,B,C<br>1,2,3,4,5<br><br>Output:<br></p>
+      
+      <script>
+        function reverseArray(array)
+        {
+          var output = [];
+          
+          for (i = array.length - 1; i >= 0; i--)
+            output.push(array[i]);
+          
+          document.getElementById("content").innerHTML += array + "<br>";
+          return output;
+        }
+        
+        function reverseArrayInPlace(array)
+        {
+          var output = [];
+          
+          for (i = array.length - 1; i >= 0; i--)
+            output.push(array[i]);
+          
+          array = output;
+        }
+        
+        var arrayValue = [1, 2, 3, 4, 5]
+        reverseArrayInPlace(arrayValue);
+        document.getElementById("content").innerHTML += reverseArray(["A", "B", "C"]) + "<br>";
+        document.getElementById("content").innerHTML += arrayValue;
+      </script>
+    </div>
+  </body>
+</html>

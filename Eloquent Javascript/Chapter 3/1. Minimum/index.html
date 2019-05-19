@@ -1,0 +1,28 @@
+<!-- January 24th, 2017 -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Exercise 1</title>
+    <link rel="stylesheet" type="text/css" href="stylish.css" />
+  </head>
+  <body>
+    <div id="mainContainer">
+      <h1 id="header">Minimum</h1>
+      <hr>
+      <p id="content"></p>
+      
+      <script>
+        function min(firstNum, secondNum)
+        {
+          if (firstNum < secondNum)
+            return firstNum;
+          else
+            return secondNum;
+        }
+        
+        document.getElementById("content").innerHTML += min(0, 10) + "<br>";
+        document.getElementById("content").innerHTML += min(0, -10);
+      </script>
+    </div>
+  </body>
+</html>
